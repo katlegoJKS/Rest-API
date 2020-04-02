@@ -1,8 +1,10 @@
-from flask import Blueprint
-from flask_restful import Api
-from resources.Hello import Hello
+import os
+from flask import Flask, request, Blueprint
+# from flask_restful import Api
+from flask_sqlalchemy import SQLAlchemy
+from flask_marshmallow import Marshmallow
 
-api_bp = Blueprint('api', __name__)
-api = Api(api_bp)
+app = Flask(__name__)
 
-api.add_resource(Hello, '/Hello')
+if __name__ == '__main__':
+    app.run(debug=True)
