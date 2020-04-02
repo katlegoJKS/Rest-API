@@ -35,7 +35,15 @@ class Computer(db.Model):
         self.hard_drive_space = hard_drive_space
         self.form_factor = form_factor
 
+# ComputerTable or ComputerSchema
+class ComputerTable(ma.Schema):
+    class Meta:
+        fields = ('ComputerID', 'hard_drive_type', 'processor', 'amount_of_ram', 'maximum_ram', 'hard_drive_space', 'form_factor')
 
+
+#Initialise Table/Schema
+computer_schema = ComputerTable(strict=True)
+computers_schema = ComputerTable(many=True, strict=True)
 
 if __name__ == '__main__':
     app.run(debug=True)
