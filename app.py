@@ -1,8 +1,8 @@
 import os
-from flask import Flask, request, Blueprint
-# from flask_restful import Api
+from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
+from flask_migrate import Migrate
 
 # Initialise app
 app = Flask(__name__)
