@@ -9,7 +9,8 @@ app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 # Database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///' + os.path.join(basedir, 'db.postgresql')
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///' + os.path.join(basedir, 'db.postgresql'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://user:pass@localhost:5432/umuzi_pcs'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialise Database
