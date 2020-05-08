@@ -1,4 +1,5 @@
 import os
+
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
@@ -9,7 +10,6 @@ app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 # Database
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///' + os.path.join(basedir, 'db.postgresql'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://user:pass@localhost:5432/umuzi_pcs'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -60,6 +60,8 @@ def add_post():
     db.session.add(my_posts)
     db.session.commit()
 
+    return "success"
+
     return post_schema.jsonify(my_posts)
 
 @app.route('/get', methods = ['GET'])
@@ -67,11 +69,16 @@ def get_post():
     all_posts = Computer.query.all()
     result = posts_schema.dump(all_posts)
 
+    return "success"
+
     return jsonify(result)
 
 @app.route('/post_deails/<ComputerID>', methods = ['GET'])
 def post_details(ComputerID):
     post = Computer.query.get(CustomerID)
+
+    return "success"
+
     return Post_schema.jsonify(post)
 
 @app.route('/post_update/<ComputerID>/', methods= ['PUT'])
@@ -93,6 +100,9 @@ def post_update(ComputerID):
     post.form_factor = form_factor
 
     db.session.commit()
+
+    return "success"
+
     return post_schema.jsonify(post)
 
 @app.route('/post_delete/<ComputerID>', methods = ['DELETE'])
@@ -100,6 +110,8 @@ def post_delete(ComputerID):
     post = Computer.query.get(CustomerID)
     db.session.delete(post)
     db.session.commit()
+
+    return "success"
 
     return Post_schema.jsonify(post)
 
